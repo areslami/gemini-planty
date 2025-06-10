@@ -1,11 +1,11 @@
 {
-  "name": "gemini-planty-backend", // You can rename this if you like
+  "name": "gemini-planty-backend",
   "version": "1.0.0",
   "description": "Backend API for Gemini Planty app",
-  "main": "server.js", // Ensure this points to server.js
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js" // <<< ADD THIS LINE
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +15,7 @@
     "express": "^4.19.2",
     "pg": "^8.11.5"
   },
-  "engines": { // <<< ADD THIS SECTION
-    "node": "20.x" // Specify a Node.js version compatible with Render. Check current recommended version.
+  "engines": {
+    "node": "20.x"
   }
 }
