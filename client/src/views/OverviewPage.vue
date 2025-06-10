@@ -50,7 +50,7 @@ export default {
     // Fetches all overview data from the backend
     async fetchOverviewData() {
       try {
-        const response = await axios.get('/api/overview');
+        const response = await api.get('/api/overview');
         this.overviewData = response.data;
       } catch (error) {
         console.error('Error fetching overview data:', error);

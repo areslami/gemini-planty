@@ -45,7 +45,7 @@ export default {
       };
 
       try {
-        await axios.post('/api/plants', plantData);
+        await api.post('/api/plants', plantData);
         alert('Plant added successfully!');
         this.resetForm();
         // Optionally navigate back to Tracker or Overview page

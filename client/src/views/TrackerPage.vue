@@ -126,14 +126,14 @@ export default {
         alert('Failed to load plants. Please check the backend server.');
       }
     },
-    async fetchSupplements() {
-      try {
-        const response = await axios.get('/api/supplements');
-        this.supplements = response.data;
-      } catch (error) {
-        console.error('Error fetching supplements:', error);
-        alert('Failed to load supplements. Please check the backend server.');
-      }
+  async fetchSupplements() {
+  try {
+    const response = await api.get('/api/supplements'); // Use relative path
+    this.supplements = response.data;
+  } catch (error) {
+    console.error('Error fetching supplements:', error);
+    alert('Failed to load supplements. Please check the backend server.');
+  }
     },
     async fetchPlantDetails() {
       if (!this.selectedPlantName) {
@@ -155,7 +155,7 @@ export default {
     },
     async fetchWateringStats() {
       try {
-        const response = await axios.get(`/api/plants/${this.selectedPlantName}/watering-stats`);
+        const response = await api.get(`/api/plants/${this.selectedPlantName}/watering-stats`);
         this.daysSinceLastWatering = response.data.daysSinceLastWatering;
         this.maWateringInterval = response.data.maWateringInterval;
       } catch (error) {
@@ -166,7 +166,7 @@ export default {
     },
     async fetchLatestRecords() {
       try {
-        const response = await axios.get(`/api/records/${this.selectedPlantName}/latest`);
+        const response = await api.get(`/api/records/${this.selectedPlantName}/latest`);
         this.latestRecords = response.data;
       } catch (error) {
         console.error('Error fetching latest records:', error);
