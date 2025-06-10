@@ -113,17 +113,22 @@ export default {
   },
   methods: {
     async fetchPlants() {
+      console.log('fetchPlants method started.'); // <<< ADD THIS LOG
+      console.log('API Base URL being used:', api.defaults.baseURL); // <<< ADD THIS LOG
+
       try {
-        const response = await axios.get('http://localhost:3000/api/plants');
+        console.log('Attempting to fetch plants from:', api.defaults.baseURL + '/api/plants'); // <<< ADD THIS LOG
+        const response = await api.get('/api/plants');
+        console.log('API response received:', response.data); // <<< ADD THIS LOG
         this.plants = response.data;
       } catch (error) {
-        console.error('Error fetching plants:', error);
+        console.error('Error fetching plants (from catch block):', error); // <<< MODIFY THIS LOG
         alert('Failed to load plants. Please check the backend server.');
       }
     },
     async fetchSupplements() {
       try {
-        const response = await axios.get('http://localhost:3000/api/supplements');
+        const response = await axios.get('/api/supplements');
         this.supplements = response.data;
       } catch (error) {
         console.error('Error fetching supplements:', error);
@@ -150,7 +155,7 @@ export default {
     },
     async fetchWateringStats() {
       try {
-        const response = await axios.get(`http://localhost:3000/api/plants/${this.selectedPlantName}/watering-stats`);
+        const response = await axios.get(`/api/plants/${this.selectedPlantName}/watering-stats`);
         this.daysSinceLastWatering = response.data.daysSinceLastWatering;
         this.maWateringInterval = response.data.maWateringInterval;
       } catch (error) {
@@ -161,7 +166,7 @@ export default {
     },
     async fetchLatestRecords() {
       try {
-        const response = await axios.get(`http://localhost:3000/api/records/${this.selectedPlantName}/latest`);
+        const response = await axios.get(`/api/records/${this.selectedPlantName}/latest`);
         this.latestRecords = response.data;
       } catch (error) {
         console.error('Error fetching latest records:', error);
@@ -183,7 +188,7 @@ export default {
       };
 
       try {
-        await axios.post('http://localhost:3000/api/records', recordData);
+        await axios.post('/api/records', recordData);
         alert('Record saved successfully!');
         this.resetForm();
         this.fetchPlantDetails();
